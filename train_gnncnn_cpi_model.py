@@ -67,7 +67,7 @@ if __name__ == "__main__":
                           'batchsize'   : (64, 'Input batch size'),
                           'hidden_dim'   : (128, 'compound/protein hidden state size'),
                           'lr'      :   (1e-4, 'Learning rate'),
-                          'decay_weight'    :(1e-4, 'Weight of decay'),
+                          'decay_weight'    :(1e-5, 'Weight of decay'),
                           'nloop'   : (100, 'Number of training iterations'),
                           'output'  : ('', 'Path of output file where save learned model'),
                           'meta'   : ('', 'Path of meta data file'),
