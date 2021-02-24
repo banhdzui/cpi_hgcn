@@ -8,6 +8,7 @@ The source code is written in Python and requires some packages:
 * Torch Geometric 
 * RDKit 
 * h5py
+* Networkx
 
 ### Data 
 Input data need to be pre-processed before using our program. The pre-processing step prepares hierarchical representation for small molecules and saves all neccessary information into a h5py file and a meta file (if it is training data). The h5py file allows the program to work with large data sets. The input data files which contain lines of tuples (smiles, protein sequence, label) can be pre-processed using provided scripts, in which: 
