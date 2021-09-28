@@ -98,6 +98,7 @@ class CPIGnnCnnModel(CPIModel):
         Constructor
         '''
         CPIModel.__init__(self, compound_config, protein_config)
+        self.full_dropout = nn.Dropout(protein_config.drop_out)
                 
     def create_protein_model(self):
         return CNNProteinEncoder(self.protein_config)
@@ -127,7 +128,7 @@ class CPIGnnCnnModel(CPIModel):
         Join compounds and proteins
         '''
         joint_state = torch.cat((cx,px), dim=-1) #m x 2D
-    
+        joint_state = self.full_dropout(joint_state)
         
         return self.output_layer(joint_state)
     

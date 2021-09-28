@@ -83,11 +83,13 @@ class CNNProteinEncoder(nn.Module):
         self.L = compute_reduced_size(self.model_setting.seq_length, used_kernels)
         print(self.L,self.L * (start + 2*step))
         out_dim = self.model_setting.output_dim
-        self.dropout = nn.Dropout(self.model_setting.drop_out)
-        self.output_layer = nn.Sequential(nn.Linear(self.L * (start + 2*step), 512),
-                                           nn.ReLU(),
-                                           nn.Linear(512, out_dim)
-                                           )
+        dropout_value = self.model_setting.drop_out
+        self.output_layer = nn.Sequential(nn.Dropout(0.5),
+                                          nn.Linear(self.L * (start + 2*step), 512),
+                                          nn.ReLU(),
+                                          nn.Dropout(dropout_value),
+                                          nn.Linear(512, out_dim)
+                                        )
         
         self.gradients = None 
                   
@@ -120,7 +122,6 @@ class CNNProteinEncoder(nn.Module):
         x = self.average_pool(x)
         x = x.transpose(1, 2).contiguous() #m x L x D
         x = torch.flatten(x, start_dim = 1)
-        x = self.dropout(x)
         return self.output_layer(x)
         
     
