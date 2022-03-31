@@ -26,6 +26,8 @@ Running the script ```train_gnncnn_cpi_model.py``` to train (and to test after t
 Running the script ```test_gnncnn_cpi_model.py``` to test a trained model. For example: 
 <pre><code class="language-python"> python test_gnncnn_cpi_model.py --test data/bindingdb/bindingdb.gnn.test --root data/chembl27/ --model data/bindingdb/bindingdb.gnn.model</code></pre>
 
+To screen of a compound libraries for given protein targets, you can create a data file which includes pairs of the compounds and the given proteins and then use the testing script. Doing the same if you'd like to test given compounds against possible off-target proteins.
+
 Information of required arguments can be found in corresponding scripts.
 
 If you have any further question, please contact us via email: danh.bui-thi@uantwerpen.be or kris.laukens@uantwerpen.be
